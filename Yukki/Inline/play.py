@@ -12,8 +12,12 @@ def url_markup(videoid, duration, user_id, query, query_type):
                 callback_data=f"slider B|{query_type}|{query}|{user_id}",
             ),
             InlineKeyboardButton(
-                text="https://drive.google.com/file/d/118cC2-a-a04JLF7W7xtdyJZm38dUekiL/view?usp=sharing",
-                callback_data=f"Yukki {videoid}|{duration}|{user_id}",
+                text="تشغيل موسيقي",
+                callback_data=f"MusicStream {videoid}|{duration}|{user_id}",
+            ),
+            InlineKeyboardButton(
+                text="تشغيل فيديو",
+                callback_data=f"Choose {videoid}|{duration}|{user_id}",
             ),
             InlineKeyboardButton(
                 text="❯",
@@ -38,13 +42,19 @@ def url_markup2(videoid, duration, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="▶️ https://drive.google.com/file/d/118cC2-a-a04JLF7W7xtdyJZm38dUekiL/view?usp=sharing",
-                callback_data=f"Yukki {videoid}|{duration}|{user_id}",
+                text="تشغيل موسيقي Play Music",
+                callback_data=f"MusicStream {videoid}|{duration}|{user_id}",
             ),
+            InlineKeyboardButton(
+                text="تشغيل فيديو",
+                callback_data=f"Choose {videoid}|{duration}|{user_id}",
+            )
+        ],
+        [
             InlineKeyboardButton(
                 text="🗑 اغلاق البحث",
                 callback_data=f"forceclose {videoid}|{user_id}",
-            ),
+            )
         ],
     ]
     return buttons
@@ -169,6 +179,21 @@ def secondary_markup(videoid, user_id):
         ],
     ]
     return buttons
+
+def secondary_markup2(videoid, user_id):
+    buttons = [
+        [
+            InlineKeyboardButton(text="▶️", callback_data=f"resumecb"),
+            InlineKeyboardButton(text="⏸️", callback_data=f"pausecb"),
+            InlineKeyboardButton(text="⏭️", callback_data=f"skipcb"),
+            InlineKeyboardButton(text="⏹️", callback_data=f"stopcb"),
+        ],
+        [
+            InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close"),
+        ],
+    ]
+    return buttons
+
 
 
 def primary_markup(videoid, user_id, current_time, total_time):
